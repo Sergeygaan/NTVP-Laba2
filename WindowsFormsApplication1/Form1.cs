@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
+    // Создание интерфейса программы
     interface IPayroll
     {
         float Earnings(float rateMonth,int rateDay,int dayWorked);
@@ -32,6 +33,7 @@ namespace WindowsFormsApplication1
 
         }
 
+        // Расчет почасам
         private void button1_Click(object sender, EventArgs e)
         {
             IPayroll Horly = new Hourly();
@@ -42,7 +44,7 @@ namespace WindowsFormsApplication1
 
             label4.Text = Horly.Earnings(clock, payment, one).ToString();
         }
-
+        // Расчет по окладу
         private void button2_Click(object sender, EventArgs e)
         {
             IPayroll Salary = new Salary();
@@ -60,7 +62,7 @@ namespace WindowsFormsApplication1
     
             label10.Text = Salary.Earnings(ratemonth, rateday, dayworked).ToString();
         }
-
+        // Расчет по  ставке
         private void button3_Click(object sender, EventArgs e)
         {
             IPayroll Rate = new Rate();
@@ -72,6 +74,8 @@ namespace WindowsFormsApplication1
             label12.Text = Rate.Earnings(change, cost, one).ToString();
         }
 
+
+        // Проверка условий ввода
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar))
